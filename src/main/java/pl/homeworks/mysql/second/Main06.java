@@ -14,7 +14,7 @@ public class Main06 {
         System.out.println("Wprowadź tytuł filmu:");
         return scan.nextLine();
     }
-//TODO fix the method
+
     static void getMovieByTitle(String title) {
         String query = "SELECT title, description, rating FROM movies WHERE title LIKE ?";
         try (Connection conn = DbUtil.connect(DbUtil.DB_URL_CINEMAS);
@@ -25,10 +25,12 @@ public class Main06 {
                     System.out.println("Wyszukany film: " + resultSet.getString("title"));
                     System.out.println("Opis: " + resultSet.getString("description"));
                     System.out.println("Ocena: " + resultSet.getDouble("rating"));
+                    return;
                 }
+                System.out.println("Nie odnaleziono filmu.");
             }
         } catch (SQLException e) {
-            System.out.println("Nie odnaleziono filmu.");
+            e.printStackTrace();
         }
     }
 

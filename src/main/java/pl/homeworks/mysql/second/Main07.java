@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class Main07 {
     public static void main(String[] args) {
-        getMovieByTitle(getCinemaName());
+        getMoviesByCinemaName(getCinemaName());
     }
 
     static String getCinemaName() {
@@ -19,7 +19,7 @@ public class Main07 {
         return scan.nextLine();
     }
 
-    static void getMovieByTitle(String title) {
+    static void getMoviesByCinemaName(String title) {
         String queryGetCinema = "SELECT id FROM cinemas WHERE name LIKE ?";
         String queryGetCinemaMovies = "SELECT movie_id FROM cinemas_movies WHERE cinema_id LIKE ?";
 
